@@ -1,0 +1,48 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet id="01-create-table-users" author="lukman">
+        <createTable tableName="users">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="username" type="VARCHAR(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="firstname" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lastname" type="VARCHAR(100)"/>
+            <column name="email" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone_number" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="other_info" type="VARCHAR(1000)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="01.1-test-insert-into-users" author="lukman">
+        <insert tableName="users">
+            <column name="username" value="ivan_test_user"/>
+            <column name="password" value="$2a$04$UVyqYkzBOh4WoyLcZc2jTefFhhrY.GXOOrvBquNgs9al93jWRkXeS"/>
+            <column name="firstname" value="Иван"/>
+            <column name="lastname" value="Иванов"/>
+            <column name="email" value="ivan_first_test_user@mail.ru"/>
+            <column name="phone_number" value="88005553535"/>
+            <column name="other_info" value="Телеграм, whatsapp и viber есть по указанному номеру телефона. На связи по будням с 10:00 до 20:00."/>
+        </insert>
+        <insert tableName="users">
+            <column name="username" value="user"/>
+            <column name="password" value="$2a$04$0BtGVRml1i.mhl60NAh.qeNne2pcTU.Kp6gQV6Ykp2oPajuXIE7FG"/>
+            <column name="firstname" value="Юзер"/>
+            <column name="lastname" value="Юзеров"/>
+            <column name="email" value="user@mail.ru"/>
+            <column name="phone_number" value="+10010010101"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
